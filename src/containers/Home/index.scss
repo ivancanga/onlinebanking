@@ -1,0 +1,15 @@
+ * {
+     margin: 0;
+     border: 0;
+     box-sizing: border-box;
+ }
+
+ .cont{
+     &__products{
+         display: flex;
+         flex-flow: row wrap;
+         justify-content: center;
+         margin: 0 auto;
+         max-width: 1024px;
+     }
+ }

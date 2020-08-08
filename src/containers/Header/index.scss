@@ -1,0 +1,16 @@
+header {
+  nav {
+    height: 60px;
+    padding: 0 66px;
+    border-bottom: 2px solid rgba(216, 237, 242, 0.644);
+    width: 72%;
+    .logo {
+      background-image: url("../../assets/santander-logo.svg");
+      background-repeat: no-repeat;
+      background-position: left bottom;
+      background-size: 100%;
+      width: 130px;
+      height: 60px;
+    }
+  }
+}
