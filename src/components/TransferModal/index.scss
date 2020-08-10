@@ -1,0 +1,124 @@
+.wrapper-modal {
+  width: 100%;
+  height: 100vh;
+  background-color: #0000006e;
+  position: fixed;
+  top: 0;
+}
+
+.modal {
+  position: absolute;
+  width: 500px;
+  border: 1px solid black;
+  background-color: white;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 130px);
+}
+
+.cont_transfer {
+  padding: 24px;
+  box-shadow: 0px 5px 13px -6px rgba(0, 0, 0, 0.75);
+  transition: transform 0.2s;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1a2;
+  .close {
+    position: absolute;
+    right: 21px;
+    top: 0px;
+    font-size: 36px;
+    cursor: pointer;
+  }
+  .form-wrapper {
+    margin: 12px 0;
+  }
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2;
+    letter-spacing: -0.67px;
+    color: #ec0000;
+    .step {
+      color: #000000de;
+      border: 1px solid;
+      border-radius: 50%;
+      padding: 0px 7px;
+      margin-right: 6px;
+    }
+  }
+  .my_accounts {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 24px;
+
+    label {
+      border: 1px solid black;
+      padding: 24px;
+      margin: 12px;
+      max-width: 50%;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 1px solid #d1d1d1a2;
+      text-align: center;
+      input {
+        margin-right: 12px;
+      }
+      .account_title {
+        font-size: 14px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 2;
+        letter-spacing: 0.27px;
+        color: #1f1f1f;
+        text-transform: uppercase;
+        border-bottom: 1px solid #d1d1d1a2;
+        margin-bottom: 12px;
+      }
+      .account_balance {
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 18px;
+      }
+    }
+  }
+  .input_container {
+    display: flex;
+    justify-content: space-evenly;
+    input {
+      padding: 12px 0 6px 0;
+      margin: 6px 0;
+      font-size: 16px;
+      border-bottom: 1px solid #c9c9c9;
+    }
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    margin: 24px auto;
+    padding: 10px;
+    width: 172px;
+    border-radius: 25px;
+    background: #c9c9c9;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    span {
+      font-weight: 500;
+    }
+  }
+  .message{
+    text-align: center;
+    font-size: 12px;
+    color: black;
+    font-weight: bold;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+  }
+}

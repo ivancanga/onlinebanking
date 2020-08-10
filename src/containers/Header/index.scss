@@ -1,9 +1,32 @@
 header {
   nav {
     height: 60px;
-    padding: 0 66px;
+    padding: 0 34px;
     border-bottom: 2px solid rgba(216, 237, 242, 0.644);
-    width: 72%;
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+    .menu {
+      border: 1px solid black;
+      padding: 6px 12px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      
+      &::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        background-image: url("../../assets/icon-menu.png");
+        background-size: cover;
+        margin-right: 6px;
+      }
+    }
     .logo {
       background-image: url("../../assets/santander-logo.svg");
       background-repeat: no-repeat;
@@ -11,6 +34,29 @@ header {
       background-size: 100%;
       width: 130px;
       height: 60px;
+    }
+    .user_info {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      &__name {
+        border: 1px solid black;
+        padding: 6px 12px;
+        border-radius: 30px;
+        cursor: pointer;
+        &::after {
+          content: ">";
+          padding: 6px;
+        }
+      }
+    }
+    .logout {
+      display: block;
+      width: 28px;
+      height: 28px;
+      background-image: url("../../assets/icon-logout.png");
+      background-size: cover;
+      margin-left: 12px;
     }
   }
 }

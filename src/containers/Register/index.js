@@ -82,62 +82,71 @@ function Register() {
         onFocus={() => {
           setStatus({});
         }}
+        autoComplete="new-password"
       >
         <div className="cont">
-          <label htmlFor="dni">DNI *</label>
           <input
             id="dni"
             name="dni"
             type="text"
             onChange={handleChange}
             value={form.dni}
+            placeholder="Tu número de DNI"
+            autocomplete="nope"
           />
         </div>
         <div className="cont">
-          <label htmlFor="password">Contraseña *</label>
           <input
             id="password"
             name="password"
             type="password"
             onChange={handleChange}
             value={form.password}
+            placeholder="Una contraseña"
+            autoComplete="new-password"
           />
         </div>
         <div className="cont">
-          <label htmlFor="name">Tu nombre y apellido *</label>
           <input
             id="name"
             name="name"
             type="text"
             onChange={handleChange}
             value={form.name}
+            placeholder="Tu nombre y apellido"
+            autoComplete="new-password"
           />
         </div>
         <div className="cont">
-          <label htmlFor="address">Tu dirección para compra/venta</label>
           <input
             id="address"
             name="address"
             type="text"
             onChange={handleChange}
             value={form.address}
+            placeholder="Tu domicilio"
+            autoComplete="new-password"
           />
         </div>
         <div className="cont">
-          <label htmlFor="phone">Un teléfono de contacto</label>
           <input
             id="phone"
             name="phone"
             type="text"
             onChange={handleChange}
             value={form.phone}
+            placeholder="Un teléfono de contacto"
+            autoComplete="new-password"
           />
         </div>
         <div className="message">{status.message}</div>
-        <button type="submit">
+        <button 
+        style={
+          form.dni && form.password ? { backgroundColor: "#EC0000" } : {}
+        }
+        type="submit">
           {loading ? <div className="loader"></div> : <span>Registrarse</span>}
         </button>
-        <a onClick={handleRedirect}>Ir a home</a>
       </form>
     </div>
   );

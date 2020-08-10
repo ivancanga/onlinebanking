@@ -32,9 +32,10 @@
     height: 100vh;
     padding: 60px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.502);
+    background: white;
 
     h2 {
-      margin: 0 auto 30px;
+      margin: 0 auto 24px;
       font-size: 35px;
       font-weight: 300;
       line-height: 40px;
@@ -42,8 +43,9 @@
 
     input {
       width: 100%;
-      padding: 12px 0;
-      font-size: 18px;
+      padding: 12px 0 6px 0;
+      margin: 6px 0;
+      font-size: 16px;
       border-bottom: 1px solid #c9c9c9;
     }
 
@@ -51,12 +53,39 @@
       display: flex;
       justify-content: center;
       margin: 24px auto;
-      padding: 12px;
+      padding: 10px;
       width: 172px;
       border-radius: 25px;
       background: #c9c9c9;
       color: #fff;
       font-size: 14px;
+      cursor: pointer;
+      span {
+        font-weight: 500;
+      }
+    }
+
+    .bot-links {
+      background: #eeeeee;
+      display: flex;
+      justify-content: center;
+      padding: 12px;
+      flex-direction: column;
+      text-align: center;
+      border-radius: 5px;
+      margin: 12px 0;
+      a {
+        color: #ec0000;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 3px;
+      }
+    }
+
+    .secure {
+      display: flex;
+      justify-content: center;
+      padding: 24px;
     }
   }
 }

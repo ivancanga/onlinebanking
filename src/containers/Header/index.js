@@ -9,30 +9,28 @@ function Header(props) {
     <header>
       <nav>
         <div className="nav-container">
-          <div className="nav-container__left">
+          {props.auth.isAuth && (
+            <div className="nav-container__left menu">
+              Menú
+            </div>
+          )}
+          <div className="nav-container__logo">
             <Link to={"/"}>
               <div className="logo" />
             </Link>
-            {props.auth.isAuth ? (
-              <div className="items">
-                <Link to={"/publish"}>Cargar producto</Link>
-              </div>
-            ) : null}
           </div>
-          {props.auth.isAuth ? (
+          {props.auth.isAuth && (
             <div className="nav-container__right">
               <div className="user_info">
-                <li>
-                  Hola, <b>{props.auth.dataUser.name}</b>
+                <li className="user_info__name">
+                  <b>{props.auth.dataUser.name}</b>
                 </li>
                 <li>
-                  <a className="logout" href="/">
-                    Logout
-                  </a>
+                  <a className="logout" href="/"></a>
                 </li>
               </div>
             </div>
-          ) : null}
+          )}
         </div>
       </nav>
     </header>

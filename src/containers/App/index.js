@@ -13,6 +13,7 @@ const App = () => {
   const [auth, setAuth] = useState({ isAuth: false });
 
   const onLogin = (id) => {
+    console.log("hola");
     firebase.db
       .doc(`users/${id}`)
       .get()
@@ -27,7 +28,7 @@ const App = () => {
         <Header auth={auth} />
 
         {auth.isAuth ? (
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={() => <Home dataUser={auth.dataUser} refreshData={onLogin} />} />
         ) : (
           <Route path="/" exact component={() => <Login onLogin={onLogin} />} />
         )}

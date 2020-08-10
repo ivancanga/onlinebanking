@@ -1,0 +1,64 @@
+.cont__product_card {
+  position: relative;
+  background-color: white;
+  min-width: 300px;
+  padding: 12px;
+  margin: 12px;
+  -webkit-box-shadow: 0px 5px 13px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 13px -6px rgba(0, 0, 0, 0.75);
+  transition: transform 0.2s;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1a2;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &::after {
+    content: ">";
+    position: absolute;
+    right: 24px;
+    bottom: 16px;
+    border: 1px solid rgba(211, 211, 211, 0.555);
+    border-radius: 50%;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    color: #ec0000;
+    font-weight: bold;
+    padding: 2px;
+  }
+  img {
+    width: 100%;
+    border: 1px solid gainsboro;
+    border-radius: 3px;
+  }
+  .title {
+    font-size: 22px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.91;
+    letter-spacing: 1.33px;
+    color: #ec0000;
+  }
+  .subtitle {
+    font-size: 10px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2;
+    letter-spacing: 0.27px;
+    color: #1f1f1f;
+    text-transform: uppercase;
+  }
+  .balance-wrapper {
+    margin-top: 24px;
+    .balance {
+      font-size: 25px;
+    }
+  }
+}
