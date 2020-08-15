@@ -94,6 +94,7 @@
       margin: 6px 0;
       font-size: 16px;
       border-bottom: 1px solid #c9c9c9;
+      border-radius: unset;
     }
   }
 
@@ -126,8 +127,23 @@
 @media only screen and (max-width: 1024px) {
   .modal {
     width: 100%;
+    transform: translate(-50%, 50px);
   }
-  .cont_transfer .input_container{
+  .cont_transfer .input_container {
     flex-flow: column;
+    align-items: center;
+    input{
+      width: 50%;
+    }
+  }
+  .cont_transfer .my_accounts{
+    label{
+      font-size: 12px;
+      white-space: nowrap;
+      .account_title{
+        font-size: 12px;
+      }
+    }
+
   }
 }

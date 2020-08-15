@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import firebase from "../../config/firebase";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./index.scss";
 
 function Register() {
@@ -9,7 +10,6 @@ function Register() {
     dni: "",
     password: "",
     name: "",
-    address: "",
     phone: "",
   };
 
@@ -63,7 +63,7 @@ function Register() {
           });
       })
       .catch((err) => {
-        setStatus({ message: "Por favor complete todos los campos" });
+        setStatus({ message: "Hubo un error. Quizá ya exista un registro con ese DNI." });
         setLoading(loading);
         console.log(status);
       });
@@ -87,7 +87,7 @@ function Register() {
           <input
             id="dni"
             name="dni"
-            type="text"
+            type="number"
             onChange={handleChange}
             value={form.dni}
             placeholder="Tu número de DNI"
@@ -113,7 +113,7 @@ function Register() {
             placeholder="Tu nombre y apellido"
           />
         </div>
-        <div className="cont">
+        {/* <div className="cont">
           <input
             id="address"
             name="address"
@@ -122,7 +122,7 @@ function Register() {
             value={form.address}
             placeholder="Tu domicilio"
           />
-        </div>
+        </div> */}
         <div className="cont">
           <input
             id="phone"
@@ -141,6 +141,10 @@ function Register() {
         type="submit">
           {loading ? <div className="loader"></div> : <span>Registrarse</span>}
         </button>
+
+        <Link className="return" to={"/"}>
+             <span >Volver a home</span>
+        </Link>
       </form>
     </div>
   );
