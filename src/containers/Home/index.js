@@ -39,7 +39,7 @@ function Home({ dataUser, refreshData }) {
         </div>
       </section>
 
-      {isShow && <TransferModal userId={dataUser.userId} dniOrigen={dataUser.dni} data={dataUser.accounts} close={setIsShow} refreshData={refreshData}/>}
+      {isShow && <TransferModal data={dataUser} close={setIsShow} refreshData={refreshData}/>}
     </div>
   );
 }

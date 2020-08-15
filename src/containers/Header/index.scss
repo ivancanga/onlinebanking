@@ -2,10 +2,10 @@ header {
   nav {
     height: 60px;
     padding: 0 34px;
-    border-bottom: 2px solid rgba(216, 237, 242, 0.644);
     .nav-container {
       display: flex;
       justify-content: space-between;
+      flex-flow: wrap;
       align-items: center;
       font-size: 14px;
     }
@@ -57,6 +57,18 @@ header {
       background-image: url("../../assets/icon-logout.png");
       background-size: cover;
       margin-left: 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  header{
+    nav{
+      padding: 0 12px;
+      .nav-container{
+        justify-content: center;
+        gap: 6px;
+      }
     }
   }
 }

@@ -35,7 +35,7 @@
     background: white;
 
     h2 {
-      margin: 0 auto 24px;
+      margin: 24px auto 24px;
       font-size: 35px;
       font-weight: 300;
       line-height: 40px;
@@ -86,6 +86,16 @@
       display: flex;
       justify-content: center;
       padding: 24px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .login {
+    .login-form {
+      width: 100%;
+      min-width: unset;
+      padding: 60px 24px;
     }
   }
 }

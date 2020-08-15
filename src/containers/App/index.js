@@ -13,7 +13,6 @@ const App = () => {
   const [auth, setAuth] = useState({ isAuth: false });
 
   const onLogin = (id) => {
-    console.log("hola");
     firebase.db
       .doc(`users/${id}`)
       .get()

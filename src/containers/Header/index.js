@@ -7,13 +7,14 @@ function Header(props) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header>
-      <nav>
+      <nav
+        style={
+          props.auth.isAuth
+            ? { borderBottom: "2px solid rgba(216, 237, 242, 0.644)" }
+            : {}
+        }
+      >
         <div className="nav-container">
-          {props.auth.isAuth && (
-            <div className="nav-container__left menu">
-              Menú
-            </div>
-          )}
           <div className="nav-container__logo">
             <Link to={"/"}>
               <div className="logo" />

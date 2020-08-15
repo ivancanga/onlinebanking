@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import firebase from "../../config/firebase";
 import "./index.scss";
 
-function TransferModal({ dniOrigen, data, close, refreshData, userId }) {
-  const [status, setStatus] = useState(true);
+function TransferModal({ data, close, refreshData }) {
+  const { accounts, dni, userId } = data;
+  let dniOrigen = dni;
+
   const [message, setMessage] = useState("");
 
   let dataForm = {
@@ -15,46 +17,24 @@ function TransferModal({ dniOrigen, data, close, refreshData, userId }) {
   const [selected, setSelected] = useState("ars");
   const [loading, setLoading] = useState(false);
 
-  const updateBalance = (dni, operator) => {
-    // Voy a buscar el id del registro por numero de documento
+  const verifyAccount = (dni) => {
+    return firebase.db.collection("users").where("dni", "==", dni).get();
+  };
+
+  const updateBalance = (id, actualBalance, operator) => {
     firebase.db
       .collection("users")
-      .where("dni", "==", dni)
-      .get()
-      .then((querySnapshot) => {
-        // Si encuentra algun registro go ahead, si no rechazo transaccion
-        if (querySnapshot.size) {
-          querySnapshot.forEach((doc) => {
-            // Llamo al registro por el id, balance actual + el importe transferido y mergeo
-            firebase.db
-              .collection("users")
-              .doc(doc.id)
-              .set(
-                {
-                  accounts: {
-                    [selected]: {
-                      balance: operator(
-                        doc.data().accounts[selected].balance,
-                        parseInt(form.importe)
-                      ),
-                    },
-                  },
-                },
-                { merge: true }
-              );
-            setLoading(loading);
-            setMessage("Transacción exitosa.");
-          });
-        } else {
-          setStatus(!status);
-          setMessage("DNI de destino incorrecto, vuelta a intentar");
-          setLoading(loading);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(loading);
-      });
+      .doc(id)
+      .set(
+        {
+          accounts: {
+            [selected]: {
+              balance: operator(actualBalance, parseInt(form.importe)),
+            },
+          },
+        },
+        { merge: true }
+      );
   };
 
   const handleChange = (e) => {
@@ -72,16 +52,54 @@ function TransferModal({ dniOrigen, data, close, refreshData, userId }) {
   };
 
   const handleSubmit = (e) => {
-    setLoading(!loading);
-    if (form.dni !== dniOrigen) {
-      updateBalance(form.dni, (a, b) => a + b);
-      status && updateBalance(dniOrigen, (a, b) => a - b);
-      refreshData(userId);
-    } else {
-      setMessage("No podes realizar transferencias a tu propia cuenta.");
-      setLoading(loading);
-    }
     e.preventDefault();
+    setLoading(!loading);
+
+    // Verificación datos vacíos
+    if (form.dni === "" || form.importe === "") {
+      setLoading(loading);
+      setMessage("Por favor ingrese datos válidos.");
+      return;
+    }
+
+    // Verificación mismo DNI orígen
+    if (form.dni === dniOrigen) {
+      setLoading(loading);
+      setMessage("No podes realizar transferencias a tu propia cuenta.");
+      return;
+    }
+
+    // Verificación fondos suficientes
+    if (form.importe > accounts[selected].balance) {
+      setLoading(loading);
+      setMessage("No posee fondos suficientes para realizar la transacción.");
+      return;
+    }
+
+    // Verifico que existe una cuenta de destino
+
+    verifyAccount(form.dni).then((querySnapshot) => {
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach((doc) => {
+          // Update balance cuenta destino
+          updateBalance(
+            doc.id,
+            doc.data().accounts[selected].balance,
+            (a, b) => a + b
+          );
+          // Update balance cuenta origen
+          updateBalance(userId, accounts[selected].balance, (a, b) => a - b);
+          setLoading(loading);
+          setMessage("Transferencia realizada con éxito.");
+          refreshData(userId);
+          return;
+        });
+      } else {
+        setLoading(loading);
+        setMessage("DNI de destino no encontrado, vuelta a intentar.");
+        return;
+      }
+    });
   };
 
   return (
@@ -104,7 +122,7 @@ function TransferModal({ dniOrigen, data, close, refreshData, userId }) {
         >
           <div className="form-wrapper">
             <h4>
-              <span class="step">1</span>Seleccioná la cuenta de orígen
+              <span className="step">1</span>Seleccioná la cuenta de orígen
             </h4>
             <div className="my_accounts">
               <label
@@ -118,8 +136,8 @@ function TransferModal({ dniOrigen, data, close, refreshData, userId }) {
                   checked={selected === "ars"}
                   onChange={handleOption}
                 />
-                <span>{data.ars.cbu}</span>
-                <p className="account_balance">$ {data.ars.balance}</p>
+                <span>{accounts.ars.cbu}</span>
+                <p className="account_balance">$ {accounts.ars.balance}</p>
               </label>
 
               <label
@@ -133,16 +151,16 @@ function TransferModal({ dniOrigen, data, close, refreshData, userId }) {
                   checked={selected === "usd"}
                   onChange={handleOption}
                 />
-                <span>{data.usd.cbu}</span>
-                <p className="account_balance">u$s {data.usd.balance}</p>
+                <span>{accounts.usd.cbu}</span>
+                <p className="account_balance">u$s {accounts.usd.balance}</p>
               </label>
             </div>
           </div>
 
           <div>
             <h4>
-              <span class="step">2</span>Ingresá el DNI de cuenta destino y el
-              importe
+              <span className="step">2</span>Ingresá el DNI de cuenta destino y
+              el importe
             </h4>
             <div className="input_container">
               <input
@@ -177,7 +195,7 @@ function TransferModal({ dniOrigen, data, close, refreshData, userId }) {
               )}
             </button>
           </div>
-          <p class="message">{message}</p>
+          <p className="message">{message}</p>
         </form>
       </div>
     </div>

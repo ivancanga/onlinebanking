@@ -79,10 +79,9 @@ function Register() {
       <form
         className="register-form"
         onSubmit={handleSubmit}
-        onFocus={() => {
-          setStatus({});
-        }}
-        autoComplete="new-password"
+        // onFocus={() => {
+        //   setStatus({});
+        // }}
       >
         <div className="cont">
           <input
@@ -92,7 +91,6 @@ function Register() {
             onChange={handleChange}
             value={form.dni}
             placeholder="Tu número de DNI"
-            autocomplete="nope"
           />
         </div>
         <div className="cont">
@@ -103,7 +101,6 @@ function Register() {
             onChange={handleChange}
             value={form.password}
             placeholder="Una contraseña"
-            autoComplete="new-password"
           />
         </div>
         <div className="cont">
@@ -114,7 +111,6 @@ function Register() {
             onChange={handleChange}
             value={form.name}
             placeholder="Tu nombre y apellido"
-            autoComplete="new-password"
           />
         </div>
         <div className="cont">
@@ -125,7 +121,6 @@ function Register() {
             onChange={handleChange}
             value={form.address}
             placeholder="Tu domicilio"
-            autoComplete="new-password"
           />
         </div>
         <div className="cont">
@@ -136,7 +131,6 @@ function Register() {
             onChange={handleChange}
             value={form.phone}
             placeholder="Un teléfono de contacto"
-            autoComplete="new-password"
           />
         </div>
         <div className="message">{status.message}</div>

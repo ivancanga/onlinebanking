@@ -63,3 +63,11 @@
     margin: 0 auto;
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .Home .info-top__wrapper{
+    .text__wrapper{
+      width: 100%;
+    }
+  }
+}
