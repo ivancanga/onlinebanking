@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import firebase from "../../config/firebase";
+import AlertModal from "../../components/AlertModal";
 import "./index.scss";
 
 function Login(props) {
@@ -102,6 +103,8 @@ function Login(props) {
           </p>
         </div>
       </form>
+
+      <AlertModal />
     </div>
   );
 }

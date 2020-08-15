@@ -39,11 +39,11 @@ function Register() {
         form.userId = data.user.uid;
         form.accounts = {
           ars: {
-            balance: 0,
+            balance: 10000,
             cbu: `${form.dni}-001`,
           },
           usd: {
-            balance: 0,
+            balance: 300,
             cbu: `${form.dni}-002`,
           },
         };
@@ -63,7 +63,9 @@ function Register() {
           });
       })
       .catch((err) => {
-        setStatus({ message: "Hubo un error. Quizá ya exista un registro con ese DNI." });
+        setStatus({
+          message: "Hubo un error. Quizá ya exista un registro con ese DNI.",
+        });
         setLoading(loading);
         console.log(status);
       });
@@ -76,13 +78,7 @@ function Register() {
 
   return (
     <div>
-      <form
-        className="register-form"
-        onSubmit={handleSubmit}
-        // onFocus={() => {
-        //   setStatus({});
-        // }}
-      >
+      <form className="register-form" onSubmit={handleSubmit}>
         <div className="cont">
           <input
             id="dni"
@@ -113,16 +109,6 @@ function Register() {
             placeholder="Tu nombre y apellido"
           />
         </div>
-        {/* <div className="cont">
-          <input
-            id="address"
-            name="address"
-            type="text"
-            onChange={handleChange}
-            value={form.address}
-            placeholder="Tu domicilio"
-          />
-        </div> */}
         <div className="cont">
           <input
             id="phone"
@@ -134,16 +120,17 @@ function Register() {
           />
         </div>
         <div className="message">{status.message}</div>
-        <button 
-        style={
-          form.dni && form.password ? { backgroundColor: "#EC0000" } : {}
-        }
-        type="submit">
+        <button
+          style={
+            form.dni && form.password ? { backgroundColor: "#EC0000" } : {}
+          }
+          type="submit"
+        >
           {loading ? <div className="loader"></div> : <span>Registrarse</span>}
         </button>
 
         <Link className="return" to={"/"}>
-             <span >Volver a home</span>
+          <span>Volver a home</span>
         </Link>
       </form>
     </div>

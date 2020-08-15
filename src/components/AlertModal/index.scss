@@ -1,0 +1,32 @@
+.cont__alertmodal {
+  background-color: #eeeeee;
+  width: 300px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  float: right;
+  margin-right: 30px;
+  margin-top: 90px;
+  font-size: 14px;
+  line-height: 22px;
+  .title {
+    border-bottom: 1px solid black;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .cont__alertmodal {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 12px;
+    padding: 10px 20px;
+    .title{
+      font-size: 12px;
+    }
+  }
+}
