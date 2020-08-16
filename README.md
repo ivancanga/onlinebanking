@@ -6,7 +6,7 @@ Solución-implementación front-end de un online banking hecho con React (hooks)
 
 > https://santanderonlinebanking.netlify.app/
 
-![desktop_version](https://ivancanga.github.io/gifOS/images/readme/desktop-version.png)
+![desktop_version](https://github.com/ivancanga/onlinebanking/blob/master/src/assets/desktop-version.png)
 
 ## Features:
 
