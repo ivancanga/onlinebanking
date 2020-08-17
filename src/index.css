@@ -10,15 +10,29 @@
   outline: none !important;
 }
 
-input{
+input {
   border-radius: unset;
 }
 
-button:hover{
+button:hover {
   opacity: 0.8;
   transition: 0.2s;
 }
 
+.disclaimer {
+  font-size: 12px;
+  text-align: center;
+  bottom: 24px;
+  right: 0;
+  transform: translate(-50%, 0);
+  font-weight: bold;
+  position: fixed;
+}
+
+.disclaimer a{
+  text-decoration: none;
+  color:  rgb(146, 0, 0);
+}
 
 .loader {
   border: 4px solid #c5c3c3dc;
@@ -39,8 +53,7 @@ button:hover{
 }
 
 @media only screen and (max-width: 1024px) {
-  .welcome-text{
+  .welcome-text {
     display: none;
   }
 }
-

@@ -99,7 +99,7 @@ function Login(props) {
             <span style={{ color: "#EC0000", fontWeight: "700" }}>
               Operá seguro
             </span>{" "}
-            con Santander
+            con Online Banking
           </p>
         </div>
       </form>

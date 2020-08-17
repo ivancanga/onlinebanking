@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import "./index.scss";
 
 function Header(props) {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <header>
       <nav

@@ -1,6 +1,6 @@
 # Online Banking
 
-Solución-implementación front-end de un online banking hecho con React (hooks) y Firebase, tomando el ejemplo de las vistas y componentes que tiene Santander de su web app.
+Solución-implementación front-end de un online banking hecho con React (hooks) y Firebase, tomando el ejemplo de las vistas y componentes que tiene un reconocido banco argentino de su web app.
 
 ## Live demo:
 

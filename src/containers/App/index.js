@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import Home from "../Home";
 import Register from "../Register";
@@ -27,13 +27,24 @@ const App = () => {
         <Header auth={auth} />
 
         {auth.isAuth ? (
-          <Route path="/" exact component={() => <Home dataUser={auth.dataUser} refreshData={onLogin} />} />
+          <Route
+            path="/"
+            exact
+            component={() => (
+              <Home dataUser={auth.dataUser} refreshData={onLogin} />
+            )}
+          />
         ) : (
           <Route path="/" exact component={() => <Login onLogin={onLogin} />} />
         )}
 
         <Route path="/register" exact component={Register} />
       </Router>
+
+      <div className="disclaimer">
+        <p>Web app con fines académicos y demostrativos.</p>
+        <a target="_blank" href="https://github.com/ivancanga/onlinebanking">Github</a>
+      </div>
     </div>
   );
 };
